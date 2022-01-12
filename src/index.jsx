@@ -1,8 +1,18 @@
-import ReactDOM from "react-dom";
 import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/navbar";
+import Main from "./pages/main";
 
 function App() {
-  return <h1>Cat is LOVE</h1>;
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById("app"));
