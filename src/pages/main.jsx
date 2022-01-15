@@ -3,7 +3,7 @@ import React from "react";
 function Main() {
   return (
     <div>
-      <h1>homie</h1>
+      <p>하이</p>
     </div>
   );
 }

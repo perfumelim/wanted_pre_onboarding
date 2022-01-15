@@ -1,17 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
+const MenuIcon = "images/icon-menu.png";
+
 export default function navbar() {
   return (
     <NavContainer>
-      <image src={"/img/icon-menu.png"} />
-      <i className="icon-logo_new" />
+      <img src={MenuIcon} />
+      {/* <i className="icon-logo_new" /> */}
       <ul>
         <li>채용</li>
         <li>이벤트</li>
         <li>직군별 연봉</li>
-        <li>이력서</li>
-        <li>커뮤니티</li>
+        <li>이력서 </li>
+        <li>
+          커뮤니티
+          {/* <MenuIcon /> */}
+        </li>
         <li>프리랜서</li>
         <li>AI 합격예측</li>
       </ul>
