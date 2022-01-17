@@ -1,11 +1,11 @@
 import React from "react";
 
-function Main() {
+function Carousel() {
   return (
     <div>
-      <p>하이</p>
+      <h1>test</h1>
     </div>
   );
 }
 
-export default Main;
+export default Carousel;

@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle` 
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
     body {
-        font-family: 'Electrolize', sans-serif;
+      font-family: AppleSDGothicNeo-SemiBold, "Apple SD Gothic Neo", sans-serif;
     }
     html,
     body,

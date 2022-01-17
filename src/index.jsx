@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import Navbar from "./components/navbar";
-import Main from "./pages/main";
+import Carousel from "./components/carousel";
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Navbar />
-      <Main />
+      <Carousel />
     </>
   );
 }
