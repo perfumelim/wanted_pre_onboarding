@@ -53,6 +53,7 @@ export default Carousel;
 const BannerList = styled.ul`
   display: flex;
   overflow-x: scroll;
+  padding: 3rem;
 
   ::-webkit-scrollbar {
     width: 0;
@@ -63,7 +64,7 @@ const BannerList = styled.ul`
 const SlideBtn = styled.button`
   background-color: #333;
   border-radius: 50%;
-  width: 100px;
+  width: 50px;
   height: 50px;
   margin: 30px;
 `;

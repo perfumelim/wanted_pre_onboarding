@@ -22,4 +22,4 @@ const MenuIcon = () => {
   );
 };
 
-export default SearchIcon;
+export default MenuIcon;
