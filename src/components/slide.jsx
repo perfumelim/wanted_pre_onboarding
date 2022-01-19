@@ -7,14 +7,14 @@ function Slide({ id, current, img_url, title, content }) {
       <div className={id - 1 === current ? "active" : "inactive"}>
         <img src={img_url} />
         {id - 1 === current ? (
-          <div className="infoBox">
+          <InfoBox>
             <h2>{title}</h2>
             <h3>{content}</h3>
             <hr />
             <div className="infoFooter">
               <p>바로가기</p>
             </div>
-          </div>
+          </InfoBox>
         ) : (
           <div></div>
         )}
@@ -47,59 +47,59 @@ const SlideContainer = styled.div`
     margin: 0 12px;
     flex-shrink: 0;
   }
+`;
 
-  .infoBox {
+const InfoBox = styled.div`
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+
+  @media (min-width: 1200px) {
     position: absolute;
-    bottom: 0;
+    left: 34px;
+    bottom: 38px;
+    width: 330px;
+    height: 146px;
+    border-radius: 4px;
     background-color: #fff;
-    width: 100%;
+    padding-top: 20px;
+  }
+
+  h2 {
+    margin: 0 20px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  h3 {
+    margin: 0 20px;
+    height: 44px;
+    font-size: 14px;
+    line-height: 1.64;
+    color: #333;
+  }
+
+  hr {
+    height: 0;
+    background-color: #ececec;
+    border: none;
 
     @media (min-width: 1200px) {
-      position: absolute;
-      left: 34px;
-      bottom: 38px;
-      width: 330px;
-      height: 146px;
-      border-radius: 4px;
-      background-color: #fff;
-      padding-top: 20px;
-    }
-
-    img {
-      object-fit: contain;
-    }
-
-    h2 {
-      margin: 0 20px;
-      font-size: 20px;
-      line-height: 1.5;
-    }
-
-    h3 {
-      margin: 0 20px;
-      height: 44px;
-      font-size: 14px;
-      line-height: 1.64;
-      color: #333;
-    }
-
-    hr {
       height: 1px;
-      background-color: #ececec;
-      border: none;
     }
+  }
 
-    .infoFooter {
-      display: flex;
-      padding-top: 12px;
-    }
+  .infoFooter {
+    display: flex;
+    padding-top: 12px;
+  }
 
-    p {
-      margin: 0 20px;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1;
-      color: #36f;
-    }
+  p {
+    margin: 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    color: #36f;
   }
 `;

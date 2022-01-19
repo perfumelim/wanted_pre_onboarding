@@ -99,11 +99,20 @@ const NavContainer = styled.div`
 
 const NavWrapper = styled.nav`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 1060px;
-  height: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px 20px;
   margin: 0 auto;
+
+  @media (min-width: 1200px) {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 1060px;
+    height: 50px;
+    padding: 0;
+  }
 `;
 
 const IconBar = styled.div`
@@ -157,8 +166,8 @@ const AsideContainer = styled.div`
       }
 
       .alarmBadge {
-        top: 0;
-        right: 0;
+        top: -6px;
+        left: 16px;
       }
     }
   }
