@@ -100,6 +100,6 @@ const InfoBox = styled.div`
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
-    color: #36f;
+    color: #3366ff;
   }
 `;
