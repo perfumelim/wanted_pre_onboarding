@@ -16,7 +16,7 @@ export default function navbar() {
           <img src={MenuIcon} className="hamburger" />
           <img src={Logo} className="logo" />
         </IconBar>
-        <ul class="menuList">
+        <ul className="menuList">
           <li>채용</li>
           <li>이벤트</li>
           <li>직군별 연봉</li>
@@ -27,16 +27,26 @@ export default function navbar() {
         </ul>
         <AsideContainer>
           <ul>
-            <li>
+            <li className="asideBtn">
               <SearchIcon />
             </li>
-            <li>
-              <AlarmIcon />
+            <li className="asideBtn">
+              <div className="badgeBox">
+                <AlarmIcon />
+                <span className="alarmBadge">
+                  <Badge />
+                </span>
+              </div>
             </li>
             <li>
-              <AvatarImg>
-                <div></div>
-              </AvatarImg>
+              <div className="badgeBox">
+                <AvatarImg>
+                  <div className="profile"></div>
+                </AvatarImg>
+                <span className="profileBadge">
+                  <Badge />
+                </span>
+              </div>
             </li>
             <li>
               <BusinessWrapper>
@@ -92,6 +102,7 @@ const NavWrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 1060px;
+  height: 50px;
   margin: 0 auto;
 `;
 
@@ -116,14 +127,39 @@ const AsideContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 0;
-  // width: 200px;
 
   ul {
     display: flex;
     align-items: center;
 
-    li {
-      padding: 0 5px;
+    .asideBtn {
+      padding: 0 10px;
+    }
+
+    .badgeBox {
+      position: relative;
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 13px;
+        height: 13px;
+        position: absolute;
+        border-radius: 5px;
+        padding: 0 !important;
+        background-color: #3366ff;
+      }
+
+      .profileBadge {
+        top: 0;
+        right: 8px;
+      }
+
+      .alarmBadge {
+        top: 0;
+        right: 0;
+      }
     }
   }
 `;
@@ -139,6 +175,7 @@ const BusinessWrapper = styled.div`
     border: 1px solid #e1e2e3;
     border-radius: 15px;
     padding: 0 10px;
+    margin-left: 15px;
     font-weight: 400;
   }
 
@@ -153,15 +190,16 @@ const BusinessWrapper = styled.div`
 `;
 
 const AvatarImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
   height: 32px;
   border: 1px solid #e1e2e3;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 11px;
 
-  div {
+  .profile {
     width: 28px;
     height: 28px;
     border-radius: 50%;

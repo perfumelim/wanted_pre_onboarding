@@ -8,9 +8,12 @@
     "start": "webpack-dev-server --open"
   },
   "dependencies": {
+    "copy-webpack-plugin": "^10.2.0",
+    "node-sass": "^7.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router-dom": "^6.2.1",
+    "sass-loader": "^12.4.0",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
@@ -18,6 +21,7 @@
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
+    "@svgr/webpack": "^6.1.2",
     "@types/node": "^16.7.2",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
@@ -28,7 +32,6 @@
     "typescript": "^4.3.5",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0",
-    "@svgr/webpack": "^6.1.2"
+    "webpack-dev-server": "^4.0.0"
   }
 }

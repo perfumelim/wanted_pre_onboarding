@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -15,7 +16,7 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /.css$/,
+        test: /\.(css|scss)$/,
         use: ["style-loader", "css-loader"],
       },
       {
@@ -33,6 +34,7 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html",
     }),
+    new CopyPlugin({ patterns: [{ from: "public/images", to: "images/" }] }),
   ],
   devServer: {
     static: {
