@@ -1,22 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import data from "../data/carouselData.json";
+import LeftBtn from "../styles/leftBtn";
+import RightBtn from "../styles/rightBtn";
+import Slide from "./slide";
 
-const maxIndex = data.carousel_data.length - 1;
+const SlideData = data.carousel_data;
 
 function Carousel() {
-  const bannerList = useRef();
+  const maxIndex = SlideData.length - 1;
+  const slideList = useRef();
   const [current, setCurrent] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  function onClick() {
+  const prevClick = () => {
+    if (!isScrolling) {
+      setCurrent((old) => old - 1);
+    }
+  };
+
+  const nextClick = () => {
     if (!isScrolling) {
       setCurrent((old) => old + 1);
     }
-  }
+  };
 
   useEffect(() => {
-    const currentBanner = bannerList.current.children[current + 1];
+    const currentBanner = slideList.current.children[current + 1];
     currentBanner.scrollIntoView({ behavior: "smooth", inline: "center" });
 
     setIsScrolling(true);
@@ -24,36 +34,53 @@ function Carousel() {
       setIsScrolling(false);
       if (current > maxIndex) {
         setCurrent(0);
-        const firstBanner = bannerList.current.children[1];
+        const firstBanner = slideList.current.children[1];
         firstBanner.scrollIntoView({ behavior: "auto", inline: "center" });
+      } else if (current < 0) {
+        setCurrent(maxIndex);
+        const lastBanner = slideList.current.children[maxIndex];
+        lastBanner.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
-    }, 500);
+    }, 200);
   }, [current, setCurrent]);
 
   return (
-    <div>
-      <BannerList ref={bannerList}>
+    <CarouselContainer>
+      <BannerList ref={slideList}>
+        <Slide {...SlideData[maxIndex]} />
         {data &&
-          data.carousel_data.map((data) => {
-            return (
-              <div key={data.id}>
-                <img src={data.img_url} />
-              </div>
-            );
+          SlideData.map((data) => {
+            return <Slide current={current} key={data.id} {...data} />;
           })}
+        <Slide {...SlideData[0]} />
       </BannerList>
-      <SlideBtn onClick={onClick}></SlideBtn>
-      <SlideBtn onClick={onClick}></SlideBtn>
-    </div>
+      <SlideBtn className="prevBtn" onClick={prevClick}>
+        <LeftBtn />
+      </SlideBtn>
+      <SlideBtn className="nextBtn" onClick={nextClick}>
+        <RightBtn />
+      </SlideBtn>
+    </CarouselContainer>
   );
 }
 
 export default Carousel;
 
+const CarouselContainer = styled.div`
+  position: relative;
+
+  .prevBtn {
+    left: 7vw;
+  }
+  .nextBtn {
+    right: 7vw;
+  }
+`;
+
 const BannerList = styled.ul`
   display: flex;
   overflow-x: scroll;
-  padding: 3rem;
+  padding: 25px 0;
 
   ::-webkit-scrollbar {
     width: 0;
@@ -62,9 +89,11 @@ const BannerList = styled.ul`
 `;
 
 const SlideBtn = styled.button`
-  background-color: #333;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin: 30px;
+  position: absolute;
+  top: 120px;
+  width: 30px;
+  height: 60px;
+  opacity: 0.5;
+  border-radius: 15px;
+  background-color: #fff;
 `;
